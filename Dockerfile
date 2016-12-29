@@ -1,12 +1,9 @@
 FROM orboan/dcss-shellinabox
 MAINTAINER Oriol Boix Anfosso <dev@orboan.com>
 
-RUN \
-    yum update -y 
+RUN yum -y install --setopt=tsflags=nodocs epel-release
 
-RUN     yum -y install --setopt=tsflags=nodocs epel-release
-
-RUN    yum -y install --setopt=tsflags=nodocs mariadb-server bind-utils pwgen psmisc hostname
+RUN yum -y install --setopt=tsflags=nodocs mariadb-server bind-utils pwgen psmisc hostname
 
 # - Clean YUM caches to minimise Docker image size...
 RUN \

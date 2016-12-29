@@ -7,7 +7,7 @@ getent passwd $user >/dev/null 2>&1 && ret=true
 if $ret; then
 echo "user already exists";
 else
-
+mkdir -p /data/$user
 useradd $user -d /data/$user
 # Setting password for the www user
 echo "${user}:iaw" | chpasswd
@@ -15,4 +15,5 @@ echo "${user}:iaw" | chpasswd
 echo "${user}  ALL=(ALL)  NOPASSWD: ALL" > /etc/sudoers.d/$user
 echo "user created"
 fi
+cp /etc/skel/.b* /data/$user
 
