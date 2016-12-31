@@ -3,11 +3,10 @@ user=www
 # Creating the www user only if it does not exist
 ret=false
 getent passwd $user >/dev/null 2>&1 && ret=true
-
+mkdir -p /data/$user
 if $ret; then
 echo "user already exists";
 else
-mkdir -p /data/$user
 useradd $user -d /data/$user
 # Setting password for the www user
 echo "${user}:iaw" | chpasswd

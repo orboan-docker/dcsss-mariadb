@@ -43,10 +43,11 @@ if [ ! -d "$DATADIR/mysql" ]; then
 	done	
         set -u
 	echo 'FLUSH PRIVILEGES ;' >> "$tempSqlFile"
-fi
+####
 chown -R mysql:mysql $DATADIR
 /usr/bin/mysqld_safe --user=mysql --datadir=/var/lib/mysql &
 sleep 5
 mysql -uroot < "$tempSqlFile"
 mysqladmin -uroot -p${MYSQL_ROOT_PASSWORD} shutdown
-#rm -f "$tempSqlFile"
+rm -f "$tempSqlFile"
+fi
