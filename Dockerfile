@@ -12,6 +12,7 @@ RUN \
 # Place VOLUME statement below all changes to /var/lib/mysql
 VOLUME /var/lib/mysql
 
+#
 #If you do not want to provide a password for the mariadb root
 #i.e. to not pass the MYSQL_ROOT_PASSWORD enviroment variable
 #at runtime when creating the container, just give some value
