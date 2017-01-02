@@ -1,6 +1,7 @@
 #!/bin/bash
 DATADIR="/var/lib/mysql"
 tempSqlFile='/tmp/mysql-first-time.sql'
+
 if [ ! -d "$DATADIR/mysql" ]; then
 	if [ -z "$MYSQL_ROOT_PASSWORD" -a -z "$MYSQL_ALLOW_EMPTY_PASSWORD" ]; then
 		echo >&2 'error: database is uninitialized and MYSQL_ROOT_PASSWORD not set'
@@ -44,6 +45,8 @@ if [ ! -d "$DATADIR/mysql" ]; then
         set -u
 	echo 'FLUSH PRIVILEGES ;' >> "$tempSqlFile"
 ####
+fi
+if [ -f "$tempSqlFile" ]; then
 chown -R mysql:mysql $DATADIR
 /usr/bin/mysqld_safe --user=mysql --datadir=/var/lib/mysql &
 sleep 5

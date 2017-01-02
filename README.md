@@ -10,7 +10,7 @@ It is also inspired by [CentOS/CentOS-Dockerfiles/mariadb/centos7/] (https://git
 
 ## Docker run example:
 
-#### docker run --name=mariadb -p 3306:3306 -p 2222:22 -p 9001:9001 -e SHELLINABOX_PORT=9103 -p 9103:4200 -d -e MYSQL_ROOT_PASSWORD=mariadb -e MYSQL_DATABASE1=moodle -e MYSQL_USER1=moodle -e MYSQL_PASSWORD1=moodle -v ~/data:/data -v /var/lib/mysql orboan/dcsss-mariadb
+#### docker run --name=mariadb -p 3306:3306 -p 2222:22 -p 9001:9001  -e USER=myusername -e PASSWORD=mypassword -e SHELLINABOX_PORT=9103 -p 9103:4200 -d -e MYSQL_ROOT_PASSWORD=mariadb -e MYSQL_DATABASE1=moodle -e MYSQL_USER1=moodle -e MYSQL_PASSWORD1=moodle -v ~/data:/data -v /var/lib/mysql orboan/dcsss-mariadb
 
 With MYSQL_ROOT_PASSWORD enviroment variable you can set the mariadb root password at container creation time.
 
@@ -31,14 +31,14 @@ username: www
 
 password: iaw
 
-You can change them in container-files/config/init/create_user.sh
+You can change them using USER and PASSWORD environment variables.
 
 ## Supervisor management via web interface
 
 Web server is listening in port 9001, thus you may create a new container by running the image adding the option
 -p xxxx:9001 to 'docker run'
 
-#### Credentials also are:
+#### Default credentials also are:
 username: www
 
 password: iaw
@@ -90,8 +90,7 @@ username: www
 
 password: iaw
 
-You can change them in container-files/config/init/create_user.sh
-
+You can change them using USER and PASSWORD environment variables.
 
 ## Usage
 

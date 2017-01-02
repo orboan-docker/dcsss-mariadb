@@ -21,6 +21,9 @@ ENV MYSQL_ALLOW_EMPTY_PASSWORD=
 
 ENV MYSQL_ROOT_PASSWORD=mariadb
 
+ENV USER=www
+ENV PASSWORD=iaw
+
 ADD container-files /
 
 # Fix permissions to allow for running on openshift
